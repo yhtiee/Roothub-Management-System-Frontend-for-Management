@@ -14,7 +14,9 @@ const Login = () => {
     e.preventDefault()
     let use = username.current.value
     let pass = password.current.value
-    loginUser(use,pass)
+    if(use === "Admin"){
+      loginUser(use,pass)
+    }
   }
 
   return (

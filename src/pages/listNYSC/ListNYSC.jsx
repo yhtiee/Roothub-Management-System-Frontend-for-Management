@@ -2,7 +2,7 @@ import React,  {useContext, useEffect, useState}  from 'react'
 import Datatable from '../../components/datatable/Datatable'
 import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
-import "./listTraines.scss"
+import "./listNYSC.scss"
 import ListContext from '../../context/ListData';
 import RetrieveContext from '../../context/retrieveContext'
 import { useNavigate } from "react-router-dom";
@@ -13,14 +13,14 @@ import AuthContext from '../../context/authContext'
 
 // import { shouldForwardProp } from '@mui/styled-engine'
 
-const ListTrainees = () => {
+const ListNYSC = () => {
   // let user = "smart"
 
-  let {getTraineesList} = useContext(ListContext)
-  let {traineesList} = useContext(ListContext)
-  let {retrievedTrainee} = useContext(RetrieveContext)
-  let {retrievedData} = useContext(RetrieveContext)
-  let {deleteTrainee} = useContext(CreateContext)
+  let {getNYSCList} = useContext(ListContext)
+  let {NYSCList} = useContext(ListContext)
+  let {retrievedNYSC} = useContext(RetrieveContext)
+  let {retrievedNYSCData} = useContext(RetrieveContext)
+  let {deleteNYSC} = useContext(CreateContext)
   // let {user} = useContext(AuthContext)
   let user = "Uyo"
   let navigate = useNavigate()
@@ -37,17 +37,17 @@ const ListTrainees = () => {
   }
 
   function handleModalConfirm() {
-    deleteTrainee(deleteId)
-    getTraineesList(user)
+    deleteNYSC(deleteId)
+    getNYSCList(user)
     setShowModal(false);
   }
 
   
   let view = (event, params) => {
     // console.log(params.row.id)
-    retrievedTrainee(params.row.id)
+    retrievedNYSC(params.row.id)
     // navigate(`${params.row.id}`)
-    console.log(retrievedData)
+    console.log(retrievedNYSCData)
   
   }
   
@@ -69,10 +69,11 @@ const ListTrainees = () => {
     },
     { field: 'last_name', headerName: 'Last name', width: 130 },
     { field: 'first_name', headerName: 'First name', width: 130 },
-    { field: "course_learning", headerName: 'Course', width: 170 },
+    { field: 'email', headerName: 'Email', width: 198 },
+    { field: 'phone_number', headerName: 'Phone Number', width: 130 },
+    { field: 'attached_area', headerName: 'Attached Area', width: 130 },
     {field: "registrationDate", headerName: "Registration Date", width: 130},
-    { field: 'amount_paid', headerName: 'Amount paid', width: 130 },
-    { field: 'balance', headerName: 'Balance', width: 130 },
+    
     {
       field: 'action',
       headerName: 'Actions',
@@ -108,13 +109,13 @@ const ListTrainees = () => {
   
 
   
-  console.log(traineesList)
+  console.log(NYSCList)
 
   useEffect(() => {
-   getTraineesList(user)
+   getNYSCList(user)
   }, [])
 
-  let data = {"rows":traineesList, "columns":columns}
+  let data = {"rows":NYSCList, "columns":columns}
   return (
     <div className='listTrainees'>
       
@@ -122,9 +123,9 @@ const ListTrainees = () => {
       <div className="listTraineesContainer">
         <Navbar/>
         <div className="info">
-          <h4> Trainees </h4>
+          <h4> NYSC </h4>
           <a href="/newTrainee">
-            <button> Add Trainee</button>
+            <button> Add NYSC</button>
           </a>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
@@ -134,4 +135,4 @@ const ListTrainees = () => {
   )
 }
 
-export default ListTrainees
+export default ListNYSC

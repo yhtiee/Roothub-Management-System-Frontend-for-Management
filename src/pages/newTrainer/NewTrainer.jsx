@@ -11,11 +11,12 @@ import AuthContext from '../../context/authContext';
 
 const NewTrainer = () => {
   const [file, setFile] = useState("");
-  const [selectedCourse, setSelectedCourse] = useState('');
+  const [selectedCourse, setSelectedCourse] = useState('Frontend Web Development');
 
-  let {createTrainee} = useContext(CreateContext)
+  let {createTrainer} = useContext(CreateContext)
   let navigate = useNavigate()
-  let {user} = useContext(AuthContext)
+  // let {user} = useContext(AuthContext)
+  let user = "Uyo"
 
   const handleChangeCourse = (event) => {
     setSelectedCourse(event.target.value);
@@ -25,8 +26,9 @@ const NewTrainer = () => {
   let first = useRef()
   let last = useRef()
   let other = useRef()
-  let amount = useRef()
-  let balance = useRef()
+  let bank = useRef()
+  let qualification = useRef()
+  let account_number = useRef()
   let myfile = useRef()
   let location = useRef()
   let phone = useRef()
@@ -39,9 +41,10 @@ const NewTrainer = () => {
     let otherName = other.current.value
     let Email = email.current.value
     let phoneNumber = phone.current.value
-    let amountPaid = amount.current.value
-    let Balance = balance.current.value
-    let Duration = selectedDuration
+    let Bank = bank.current.value
+    let Qualification = qualification.current.value
+    let Account = account_number.current.value
+    // let Duration = selectedDuration
     let Location = location.current.value
     let Course = selectedCourse
     let mypic = myfile.current.value
@@ -53,12 +56,12 @@ const NewTrainer = () => {
     formData.append("other_names", otherName);
     formData.append("email", Email);
     formData.append("phone_number", phoneNumber);
-    formData.append("course_learning", Course);
-    formData.append("course_duration", Duration);
-    formData.append("amount_paid", amountPaid);
-    formData.append("balance", Balance);
+    formData.append("course_teaching", Course);
+    formData.append("qualification", Qualification);
+    formData.append("bank", Bank);
+    formData.append("account_number", Account);
     formData.append("location", Location);
-    createTrainee(formData)
+    createTrainer(formData)
     navigate("/trainers")
    
   }
@@ -105,8 +108,12 @@ const NewTrainer = () => {
                 <input type="number" required ref={phone}/>
               </div>
               <div className="formInput">
+                <label>Qualification</label>
+                <input type="text" required ref={qualification}/>
+              </div>
+              <div className="formInput">
                 <label>Course Teaching</label>
-                <select id="course" name="course" value={selectedCourse} onChange={handleChangeCourse} defaultValue="Frontend Web Development">
+                <select id="course" name="course" value={selectedCourse} onChange={handleChangeCourse} >
                   <option value="Frontend Web Development">Frontend Web Development</option>
                   <option value="Backend Web Development">Backend Web Development</option>
                   <option value="Full Stack Web Development">Full Stack Web Development</option>
@@ -122,12 +129,12 @@ const NewTrainer = () => {
                 <input type="text" defaultValue={user} required ref={location} />
               </div>
               <div className="formInput">
-                <label>Amount Paid</label>
-                <input type="number" required ref={amount}/>
+                <label>Bank</label>
+                <input type="text" required ref={bank}/>
               </div>
               <div className="formInput">
-                <label>Balance</label>
-                <input type="number" required ref={balance}/>
+                <label>Account Number</label>
+                <input type="number" required ref={account_number}/>
               </div>
               {/* <Link to="/trainees"> */}
                 <button type='submit'>

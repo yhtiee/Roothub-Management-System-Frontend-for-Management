@@ -19,6 +19,9 @@ const Home = () => {
   let {getTotalAlumni} = useContext(DataContext)
   let {getTotalTrainee} = useContext(DataContext)
   let {getTotalTrainer} = useContext(DataContext)
+  let {getTotalNYSC} = useContext(DataContext)
+  let {getTotalRoles} = useContext(DataContext)
+  let {getTotalInterns} = useContext(DataContext)
 
   let general = () => {
     setWidget("general")
@@ -26,6 +29,9 @@ const Home = () => {
     getTotalAlumni(user)
     getTotalTrainee(user)
     getTotalTrainer(user)
+    getTotalNYSC(user)
+    getTotalRoles(user)
+    getTotalInterns(user)
   }
 
   useEffect(() => {
@@ -39,6 +45,9 @@ const Home = () => {
     getTotalAlumni(user)
     getTotalTrainee(user)
     getTotalTrainer(user)
+    getTotalNYSC(user)
+    getTotalRoles(user)
+    getTotalInterns(user)
   }
 
   let uyo = () => {
@@ -47,6 +56,9 @@ const Home = () => {
     getTotalAlumni(user)
     getTotalTrainee(user)
     getTotalTrainer(user)
+    getTotalNYSC(user)
+    getTotalRoles(user)
+    getTotalInterns(user)
   }
 
   let abakiliki = () => {
@@ -55,6 +67,9 @@ const Home = () => {
     getTotalAlumni(user)
     getTotalTrainee(user)
     getTotalTrainer(user)
+    getTotalNYSC(user)
+    getTotalRoles(user)
+    getTotalInterns(user)
   }
 
   let lagos = () => {
@@ -63,6 +78,9 @@ const Home = () => {
     getTotalAlumni(user)
     getTotalTrainee(user)
     getTotalTrainer(user)
+    getTotalNYSC(user)
+    getTotalRoles(user)
+    getTotalInterns(user)
   }
   let ph = () => {
     setWidget("ph")
@@ -70,6 +88,9 @@ const Home = () => {
     getTotalAlumni(user)
     getTotalTrainee(user)
     getTotalTrainer(user)
+    getTotalNYSC(user)
+    getTotalRoles(user)
+    getTotalInterns(user)
   }
   return (
     <div className='home'>

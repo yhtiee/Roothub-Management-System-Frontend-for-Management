@@ -12,6 +12,12 @@ export const TotalDataProvider = ({children}) => {
     let [totalAlumni, setTotalAlumni] = useState(null)
     let [totalTrainee, setTotalTrainee] = useState(null)
     let [totalTrainer, setTotalTrainer] = useState(null)
+    let [totalIntern, setTotalIntern] = useState(null)
+    let [totalRoles, setTotalRoles] = useState(null)
+    let [totalNYSC, setTotalNYSC] = useState(null)
+
+
+
 
 
     
@@ -89,7 +95,84 @@ export const TotalDataProvider = ({children}) => {
         setError("Invalid Username or Password")
 
     }
-   } 
+   }
+
+   async function getTotalInterns(user){
+
+    let response = await fetch ("http://127.0.0.1:8000/interns/total_intern_location/", {  
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({'username': user})
+    })
+    // console.log(response)
+    if (response.ok){
+        let data = await response.json()
+        if(response.status === 200){
+            SetSuccess("Successfully Logged In")
+            setTotalIntern(data)
+        }
+        // console.log(data)
+    }
+    else{
+        console.log("error")
+        setError("Invalid Username or Password")
+
+    }
+   }
+
+   async function getTotalRoles(user){
+
+    let response = await fetch ("http://127.0.0.1:8000/other_roles/total_other_roles_location/", {  
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({'username': user})
+    })
+    // console.log(response)
+    if (response.ok){
+        let data = await response.json()
+        if(response.status === 200){
+            SetSuccess("Successfully Logged In")
+            setTotalRoles(data)
+        }
+        // console.log(data)
+    }
+    else{
+        console.log("error")
+        setError("Invalid Username or Password")
+
+    }
+   }
+
+   async function getTotalNYSC(user){
+
+    let response = await fetch ("http://127.0.0.1:8000/NYSC/total_NYSC_location/", {  
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({'username': user})
+    })
+    // console.log(response)
+    if (response.ok){
+        let data = await response.json()
+        if(response.status === 200){
+            SetSuccess("Successfully Logged In")
+            setTotalNYSC(data)
+        }
+        // console.log(data)
+    }
+    else{
+        console.log("error")
+        setError("Invalid Username or Password")
+
+    }
+   }
+
+
 
 
    let contextData ={
@@ -98,7 +181,13 @@ export const TotalDataProvider = ({children}) => {
     getTotalTrainee : getTotalTrainee,
     totalTrainee : totalTrainee,
     getTotalTrainer : getTotalTrainer,
-    totalTrainer : totalTrainer
+    totalTrainer : totalTrainer,
+    getTotalInterns : getTotalInterns,
+    totalIntern : totalIntern,
+    totalRoles: totalRoles,
+    getTotalRoles : getTotalRoles,
+    totalNYSC : totalNYSC,
+    getTotalNYSC : getTotalNYSC
    }
   
   return (

@@ -22,6 +22,12 @@ import PrivateRoute from "./route/PrivateRoute";
 import { TotalDataProvider } from "./context/TotalData";
 import ListTrainer from "./pages/listTrainer/ListTrainer";
 import Trainer from "./pages/trainer/Trainer";
+import NewTrainer from "./pages/newTrainer/NewTrainer";
+import EditTrainer from "./pages/editTrainer/EditTrainer";
+import ListAlumni from "./pages/listAlumni/ListAlumni";
+import EditAlumni from "./pages/editAlumni/EditAlumni";
+import Alumni from "./pages/alumni/Alumni";
+import ListNYSC from "./pages/listNYSC/ListNYSC";
 
 
 function App() {
@@ -49,8 +55,17 @@ function App() {
                       <Route path="/editTrainee" element = {<PrivateRoute><EditTrainee/></PrivateRoute>} />
                       
                       <Route path="/trainers" element = {<ListTrainer/>} />
-                      <Route path="/newTrainer" element = {<NewTrainees/>} />
+                      <Route path="/newTrainer" element = {<NewTrainer/>} />
                       <Route path="/trainer" element = {<Trainer/>} />
+                      <Route path="/editTrainer" element = {<PrivateRoute><EditTrainer/></PrivateRoute>} />
+
+                      <Route path="/alumni" element = {<PrivateRoute><ListAlumni/></PrivateRoute>} />
+                      <Route path="/editAlumni" element = {<PrivateRoute><EditAlumni/></PrivateRoute>}/>
+                      <Route path="/singleAlumni" element = {<Alumni/>} />
+
+                      <Route path="/ListNYSC" element = {<PrivateRoute><ListNYSC/></PrivateRoute>} />
+
+
                   </Routes>
                   </TotalDataProvider>
                 </UpdateProvider>

@@ -2,7 +2,7 @@ import React,  {useContext, useEffect, useState}  from 'react'
 import Datatable from '../../components/datatable/Datatable'
 import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
-import "./listTrainers.scss"
+import "./listAlumni.scss"
 import ListContext from '../../context/ListData';
 import RetrieveContext from '../../context/retrieveContext'
 import { useNavigate } from "react-router-dom";
@@ -10,12 +10,12 @@ import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
 import AuthContext from '../../context/authContext'
 
-const ListTrainer = () => {
-    let {getTrainersList} = useContext(ListContext)
-    let {trainersList} = useContext(ListContext)
-    let {retrievedTrainer} = useContext(RetrieveContext)
-    let {retrievedTrainerData} = useContext(RetrieveContext)
-    let {deleteTrainer} = useContext(CreateContext)
+const ListAlumni = () => {
+    let {getAlumniList} = useContext(ListContext)
+    let {alumniList} = useContext(ListContext)
+    let {retrievedAlumni} = useContext(RetrieveContext)
+    let {retrievedAlumniData} = useContext(RetrieveContext)
+    let {deleteAlumni} = useContext(CreateContext)
     let user = "Uyo"
     let navigate = useNavigate()
     const [showModal, setShowModal] = useState(false);
@@ -31,16 +31,16 @@ const ListTrainer = () => {
     }
   
     function handleModalConfirm() {
-      deleteTrainer(deleteId)
-      getTrainersList(user)
+      deleteAlumni(deleteId)
+      getAlumniList(user)
       setShowModal(false);
       window.location.reload()
     }
   
     
     let view = (event, params) => {
-      retrievedTrainer(params.row.id)
-      console.log(retrievedTrainerData)
+      retrievedAlumni(params.row.id)
+      console.log(retrievedAlumniData)
     }
     
     const columns = [
@@ -61,19 +61,20 @@ const ListTrainer = () => {
       },
       { field: 'last_name', headerName: 'Last name', width: 130 },
       { field: 'first_name', headerName: 'First name', width: 130 },
-      { field: "course_teaching", headerName: 'Course', width: 220 },
+      {field: "email", headerName: "Email", width:200},
+      {field: "phone_number", headerName: "Phone", width:150},
       {field: "registrationDate", headerName: "Registration Date", width: 130},
-      { field: 'qualification', headerName: 'Qualification', width: 220 },
+      {field: "completionDate", headerName: "Completion Date", width: 130},
       {
         field: 'action',
         headerName: 'Actions',
         sortable: false,
-        width: 250,
+        width: 200,
         renderCell: (params) => {
             return (
                 <>
                     <div className='actions'>
-                        <a href="/trainer">
+                        <a href="/singleAlumni">
                           <button onClick={event => view(event, params)} className='view'>
                             View
                           </button>
@@ -81,14 +82,11 @@ const ListTrainer = () => {
                         <button onClick={event => handleDeleteClick(event, params)} className='delete'>
                             Delete
                         </button>
-                        <a href="/editTrainer">
+                        <a href="/editAlumni">
                           <button onClick={event => view(event, params)} className='edit'>
                             Edit
                           </button>
                         </a>
-                        <button className='move'>
-                            Move
-                        </button>
                     </div>
                 </>
             )
@@ -97,21 +95,18 @@ const ListTrainer = () => {
     ];
     
     useEffect(() => {
-        getTrainersList(user)
-        console.log(trainersList)
+        getAlumniList(user)
+        console.log(alumniList)
     }, [])
   
-    let data = {"rows":trainersList, "columns":columns}
+    let data = {"rows":alumniList, "columns":columns}
   return (
     <div className='listTrainees'>
       <Sidebar/>
       <div className="listTraineesContainer">
         <Navbar/>
         <div className="info">
-          <h4> Trainers </h4>
-          <a href="/newTrainer">
-            <button> Add Trainer</button>
-          </a>
+          <h4> Alumni </h4>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
         <Datatable value={data}/>
@@ -120,4 +115,4 @@ const ListTrainer = () => {
   )
 }
 
-export default ListTrainer
+export default ListAlumni

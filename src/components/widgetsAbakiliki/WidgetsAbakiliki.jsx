@@ -15,10 +15,18 @@ const WidgetsAbakiliki = () => {
     let {getTotalAlumni} = useContext(DataContext)
     let {getTotalTrainee} = useContext(DataContext)
     let {getTotalTrainer} = useContext(DataContext)
+    let {getTotalNYSC} = useContext(DataContext)
+    let {getTotalRoles} = useContext(DataContext)
+    let {getTotalInterns} = useContext(DataContext)
+
 
     let {totalAlumni} = useContext(DataContext)
     let {totalTrainee} = useContext(DataContext)
     let {totalTrainer} = useContext(DataContext)
+    let {totalNYSC} = useContext(DataContext)
+    let {totalIntern} = useContext(DataContext)
+    let {totalRoles} = useContext(DataContext)
+
 
     // let {user} = useContext(AuthContext)
 
@@ -26,7 +34,9 @@ const WidgetsAbakiliki = () => {
       getTotalAlumni(user)
       getTotalTrainee(user)
       getTotalTrainer(user)
-
+      getTotalNYSC(user)
+      getTotalRoles(user)
+      getTotalInterns(user)
     }, [])
     
   return (
@@ -36,7 +46,7 @@ const WidgetsAbakiliki = () => {
                 <PersonOutlineOutlinedIcon className='icon1'/>
             </div>
             <div className="counter">
-                <span>50</span>
+                <span>{totalIntern}</span>
             </div>
             <div className="info">
                 <span> Interns </span>
@@ -96,7 +106,7 @@ const WidgetsAbakiliki = () => {
                 <PersonOutlineOutlinedIcon className='icon1'/>
             </div>
             <div className="counter">
-                <span>20</span>
+                <span>{totalNYSC}</span>
             </div>
             <div className="info">
                 <span> NYSC</span>
@@ -111,7 +121,7 @@ const WidgetsAbakiliki = () => {
                 <PersonOutlineOutlinedIcon className='icon1'/>
             </div>
             <div className="counter">
-                <span>10</span>
+                <span>{totalRoles}</span>
             </div>
             <div className="info">
                 <span> Other Roles </span>

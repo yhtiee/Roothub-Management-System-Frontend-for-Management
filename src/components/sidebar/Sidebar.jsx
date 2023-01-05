@@ -61,12 +61,16 @@ const Sidebar = () => {
             </a>
           </li>
           <li>
+            <a href="/alumni">
             <PersonOutlineOutlinedIcon className='icon'/>
             <span> Alumni </span>
+            </a>
           </li>
           <li>
-            <PersonOutlineOutlinedIcon className='icon'/>
-            <span> NYSC </span>
+            <a href="/ListNYSC">
+              <PersonOutlineOutlinedIcon className='icon'/>
+              <span> NYSC </span>
+            </a>
           </li>
           <li>
             <PersonOutlineOutlinedIcon className='icon'/>
