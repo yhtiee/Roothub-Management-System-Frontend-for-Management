@@ -77,8 +77,10 @@ const Sidebar = () => {
             <span> Other Roles </span>
           </li>
           <li>
+            <a href="/ListInterns">
             <PersonOutlineOutlinedIcon className='icon'/>
             <span> Interns </span>
+            </a>
           </li>
           
           {/* <p className="title"> BRANCH MANAGERS </p>

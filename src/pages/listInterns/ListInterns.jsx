@@ -2,7 +2,7 @@ import React,  {useContext, useEffect, useState}  from 'react'
 import Datatable from '../../components/datatable/Datatable'
 import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
-import "./listNYSC.scss"
+import "./listInterns.scss"
 import ListContext from '../../context/ListData';
 import RetrieveContext from '../../context/retrieveContext'
 import { useNavigate } from "react-router-dom";
@@ -13,14 +13,14 @@ import AuthContext from '../../context/authContext'
 
 // import { shouldForwardProp } from '@mui/styled-engine'
 
-const ListNYSC = () => {
+const ListInterns = () => {
   // let user = "smart"
 
-  let {getNYSCList} = useContext(ListContext)
-  let {NYSCList} = useContext(ListContext)
-  let {retrievedNYSC} = useContext(RetrieveContext)
-  let {retrievedNYSCData} = useContext(RetrieveContext)
-  let {deleteNYSC} = useContext(CreateContext)
+  let {getInternsList} = useContext(ListContext)
+  let {internsList} = useContext(ListContext)
+  let {retrievedIntern} = useContext(RetrieveContext)
+  let {retrievedInternData} = useContext(RetrieveContext)
+  let {deleteIntern} = useContext(CreateContext)
   // let {user} = useContext(AuthContext)
   let user = "Uyo"
   let navigate = useNavigate()
@@ -37,7 +37,7 @@ const ListNYSC = () => {
   }
 
   function handleModalConfirm() {
-    deleteNYSC(deleteId)
+    deleteIntern(deleteId)
     setShowModal(false);
     window.location.reload()
   }
@@ -45,9 +45,9 @@ const ListNYSC = () => {
   
   let view = (event, params) => {
     // console.log(params.row.id)
-    retrievedNYSC(params.row.id)
+    retrievedIntern(params.row.id)
     // navigate(`${params.row.id}`)
-    console.log(retrievedNYSCData)
+    console.log(retrievedInternData)
   
   }
   
@@ -83,7 +83,7 @@ const ListNYSC = () => {
           return (
               <>
                   <div className='actions'>
-                      <a href="/NYSC">
+                      <a href="/Intern">
                         <button onClick={event => view(event, params)} className='view'>
                           View
                         </button>
@@ -91,7 +91,7 @@ const ListNYSC = () => {
                       <button onClick={event => handleDeleteClick(event, params)} className='delete'>
                           Delete
                       </button>
-                      <a href="/editNYSC">
+                      <a href="/editIntern">
                         <button onClick={event => view(event, params)} className='edit'>
                           Edit
                         </button>
@@ -109,13 +109,13 @@ const ListNYSC = () => {
   
 
   
-  console.log(NYSCList)
+  console.log(internsList)
 
   useEffect(() => {
-   getNYSCList(user)
+   getInternsList(user)
   }, [])
 
-  let data = {"rows":NYSCList, "columns":columns}
+  let data = {"rows":internsList, "columns":columns}
   return (
     <div className='listTrainees'>
       
@@ -123,9 +123,9 @@ const ListNYSC = () => {
       <div className="listTraineesContainer">
         <Navbar/>
         <div className="info">
-          <h4> NYSC </h4>
-          <a href="/newNYSC">
-            <button> Add NYSC</button>
+          <h4> Interns </h4>
+          <a href="/newIntern">
+            <button> Add Intern</button>
           </a>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
@@ -135,4 +135,4 @@ const ListNYSC = () => {
   )
 }
 
-export default ListNYSC
+export default ListInterns

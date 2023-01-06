@@ -28,6 +28,13 @@ import ListAlumni from "./pages/listAlumni/ListAlumni";
 import EditAlumni from "./pages/editAlumni/EditAlumni";
 import Alumni from "./pages/alumni/Alumni";
 import ListNYSC from "./pages/listNYSC/ListNYSC";
+import NewNYSC from "./pages/newNYSC/NewNYSC";
+import EditNYSC from "./pages/editIntern/EditIntern";
+import NYSC from "./pages/NYSC/NYSC";
+import ListInterns from "./pages/listInterns/ListInterns";
+import NewIntern from "./pages/newIntern/NewIntern";
+import EditIntern from "./pages/editIntern/EditIntern";
+import Intern from "./pages/intern/Intern";
 
 
 function App() {
@@ -64,6 +71,14 @@ function App() {
                       <Route path="/singleAlumni" element = {<Alumni/>} />
 
                       <Route path="/ListNYSC" element = {<PrivateRoute><ListNYSC/></PrivateRoute>} />
+                      <Route path="/newNYSC" element = {<NewNYSC/>} />
+                      <Route path="/editNYSC" element = {<PrivateRoute><EditNYSC/></PrivateRoute>}/>
+                      <Route path="/NYSC" element = {<NYSC/>} />
+
+                      <Route path="/ListInterns" element = {<PrivateRoute><ListInterns/></PrivateRoute>} />
+                      <Route path="/newIntern" element = {<NewIntern/>} />
+                      <Route path="/editIntern" element = {<PrivateRoute><EditIntern/></PrivateRoute>}/>
+                      <Route path="/Intern" element = {<Intern/>} />
 
 
                   </Routes>
