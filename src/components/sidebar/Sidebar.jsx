@@ -49,7 +49,7 @@ const Sidebar = () => {
           </a>
           <p className="title">LIST</p>
           <li>
-            <Link href="/trainees">
+            <Link to="/trainees">
               <PersonOutlineOutlinedIcon className='icon'/>
               <span> Trainees </span>
             </Link>
