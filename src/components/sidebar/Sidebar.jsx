@@ -7,7 +7,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import AuthContext from '../../context/authContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const Sidebar = () => {
   let {logoutUser} = useContext(AuthContext)
   let navigate = useNavigate()
@@ -41,7 +41,7 @@ const Sidebar = () => {
               <span>Analysis</span>
             </li>
           </a>
-          <a href="http://127.0.0.1:8000/admin/">
+          <a href="https://web-production-0dc8.up.railway.app/admin/">
             <li>
               <SettingsIcon className='icon'/>
               <span> Admin Panel </span>
@@ -49,10 +49,10 @@ const Sidebar = () => {
           </a>
           <p className="title">LIST</p>
           <li>
-            <a href="/trainees">
+            <Link href="/trainees">
               <PersonOutlineOutlinedIcon className='icon'/>
               <span> Trainees </span>
-            </a>
+            </Link>
           </li>
           <li>
             <a href="/trainers">
