@@ -5,7 +5,7 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import "./listTraines.scss"
 import ListContext from '../../context/ListData';
 import RetrieveContext from '../../context/retrieveContext'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
 import AuthContext from '../../context/authContext'
@@ -82,19 +82,19 @@ const ListTrainees = () => {
           return (
               <>
                   <div className='actions'>
-                      <a href="/trainee">
+                      <Link to="/trainee">
                         <button onClick={event => view(event, params)} className='view'>
                           View
                         </button>
-                      </a>
+                      </Link>
                       <button onClick={event => handleDeleteClick(event, params)} className='delete'>
                           Delete
                       </button>
-                      <a href="/editTrainee">
+                      <Link to="/editTrainee">
                         <button onClick={event => view(event, params)} className='edit'>
                           Edit
                         </button>
-                      </a>
+                      </Link>
                       <button className='move'>
                           Move
                       </button>

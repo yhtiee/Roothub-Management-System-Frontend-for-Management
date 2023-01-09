@@ -41,12 +41,12 @@ const Sidebar = () => {
               <span>Analysis</span>
             </li>
           </a>
-          <a href="https://web-production-0dc8.up.railway.app/admin/">
+          <Link to ="https://web-production-0dc8.up.railway.app/admin/">
             <li>
               <SettingsIcon className='icon'/>
               <span> Admin Panel </span>
             </li>
-          </a>
+          </Link>
           <p className="title">LIST</p>
           <li>
             <Link to="/trainees">
@@ -55,32 +55,32 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <a href="/trainers">
+            <Link to="/trainers">
             <PersonOutlineOutlinedIcon className='icon'/>
             <span> Trainers </span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/alumni">
+            <Link to="/alumni">
             <PersonOutlineOutlinedIcon className='icon'/>
             <span> Alumni </span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/ListNYSC">
+            <Link to="/ListNYSC">
               <PersonOutlineOutlinedIcon className='icon'/>
               <span> NYSC </span>
-            </a>
+            </Link>
           </li>
           <li>
             <PersonOutlineOutlinedIcon className='icon'/>
             <span> Other Roles </span>
           </li>
           <li>
-            <a href="/ListInterns">
+            <Link to="/ListInterns">
             <PersonOutlineOutlinedIcon className='icon'/>
             <span> Interns </span>
-            </a>
+            </Link>
           </li>
           
           {/* <p className="title"> BRANCH MANAGERS </p>
