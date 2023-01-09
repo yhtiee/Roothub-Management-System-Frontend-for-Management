@@ -56,7 +56,7 @@ const NewTrainees = () => {
     let Location = location.current.value
     let Course = selectedCourse
     let mypic = myfile.current.value
-    let pic = URL.createObjectURL(file)
+    // let pic = URL.createObjectURL(file)
     let formData = new FormData();
     formData.append("profile_picture", file);
     formData.append('first_name', firstName);
