@@ -4,10 +4,11 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import "./newTrainees.scss"
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import { useState } from "react";
-import { useRef, useContext } from 'react'
+import { useRef, useContext, useEffect } from 'react'
 import CreateContext from '../../context/CreateData';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/authContext';
+
 
 
 const NewTrainees = () => {
@@ -19,12 +20,7 @@ const NewTrainees = () => {
   let navigate = useNavigate()
   // let {user} = useContext(AuthContext)
   let user = "Uyo"
-
-
-
-
-
-
+  
   const handleChangeCourse = (event) => {
     setSelectedCourse(event.target.value);
   };
@@ -45,6 +41,7 @@ const NewTrainees = () => {
 
   let submitForm = (e) => {
     e.preventDefault()
+    // const Imagefile = new File([PH], PH);
     let firstName = first.current.value
     let lastName = last.current.value
     let otherName = other.current.value
@@ -73,6 +70,7 @@ const NewTrainees = () => {
     navigate("/trainees")
    
   }
+
 
  
   return (

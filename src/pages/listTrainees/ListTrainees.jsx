@@ -10,6 +10,7 @@ import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
 import AuthContext from '../../context/authContext'
 // import 'react-bootstrap/dist/react-bootstrap.css'
+import PH from "../../assets/defaultimage.jpg"
 
 // import { shouldForwardProp } from '@mui/styled-engine'
 
@@ -61,7 +62,7 @@ const ListTrainees = () => {
           return (
               <>
                 <div className ="imageContainer">
-                  <img className="cellImage" src={params.row.profile_picture} alt="profile" />
+                  <img className="cellImage" src={params.row.profile_picture? params.row.profile_picture: PH } alt="profile" />
                 </div>
               </>
           )

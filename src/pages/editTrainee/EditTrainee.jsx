@@ -86,11 +86,6 @@ const EditTrainee = () => {
    
   }
 
-  
-  
-  
-
- 
   return (
     <div className='new'>
       <Sidebar/>
@@ -105,7 +100,7 @@ const EditTrainee = () => {
                 file
                   ? URL.createObjectURL(file)
                   : traineeData.profile_picture
-              } alt="" />
+              } alt="alt"/>
           </div>
           <div className="right">
             <form onSubmit={submitForm} encType="multipart/form-data">

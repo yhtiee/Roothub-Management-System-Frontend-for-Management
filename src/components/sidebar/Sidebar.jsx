@@ -41,12 +41,12 @@ const Sidebar = () => {
               <span>Analysis</span>
             </li>
           </a>
-          <Link to="https://web-production-0dc8.up.railway.app/admin/" target="blanK">
+          <a href="https://web-production-0dc8.up.railway.app/admin/" target="_blank" rel="noreferrer">
             <li>
               <SettingsIcon className='icon'/>
               <span> Admin Panel </span>
             </li>
-          </Link>
+          </a>
           <p className="title">LIST</p>
           <li>
             <Link to="/trainees">
