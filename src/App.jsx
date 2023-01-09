@@ -35,6 +35,7 @@ import ListInterns from "./pages/listInterns/ListInterns";
 import NewIntern from "./pages/newIntern/NewIntern";
 import EditIntern from "./pages/editIntern/EditIntern";
 import Intern from "./pages/intern/Intern";
+import EditingNYSC from "./pages/editNYSC/EditingNYSC";
 
 
 function App() {
@@ -72,7 +73,7 @@ function App() {
 
                       <Route path="/ListNYSC" element = {<PrivateRoute><ListNYSC/></PrivateRoute>} />
                       <Route path="/newNYSC" element = {<NewNYSC/>} />
-                      <Route path="/editNYSC" element = {<PrivateRoute><EditNYSC/></PrivateRoute>}/>
+                      <Route path="/editingNYSC" element = {<PrivateRoute><EditingNYSC/></PrivateRoute>}/>
                       <Route path="/NYSC" element = {<NYSC/>} />
 
                       <Route path="/ListInterns" element = {<PrivateRoute><ListInterns/></PrivateRoute>} />

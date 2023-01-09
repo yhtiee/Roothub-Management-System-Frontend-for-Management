@@ -91,7 +91,7 @@ const ListNYSC = () => {
                       <button onClick={event => handleDeleteClick(event, params)} className='delete'>
                           Delete
                       </button>
-                      <a href="/editNYSC">
+                      <a href="/editingNYSC">
                         <button onClick={event => view(event, params)} className='edit'>
                           Edit
                         </button>

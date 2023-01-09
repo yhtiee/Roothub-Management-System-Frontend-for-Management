@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import { useContext } from "react";
 import { useRef } from "react";
-import API_URL from "./API.JSX";
+// import API_URL from "./API.JSX";
 
 
 const ListContext = createContext()
@@ -9,6 +9,8 @@ const ListContext = createContext()
 export default ListContext
 
 export const ListProvider = ({children}) => {
+
+    let API_URL = "https://web-production-0dc8.up.railway.app/"
 
     let [traineesList, setTraineesList] = useState([])
     let [trainersList, setTrainersList] = useState([])

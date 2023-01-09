@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { createContext, useState, useEffect } from "react";
+import API_URL from './API';
 
 const DataContext = createContext()
 
@@ -24,7 +25,7 @@ export const TotalDataProvider = ({children}) => {
 
    async function getTotalAlumni(user){
 
-    let response = await fetch ("http://127.0.0.1:8000/alumni/total_alumni_location/", {  
+    let response = await fetch (`${API_URL}alumni/total_alumni_location/`, {  
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -49,7 +50,7 @@ export const TotalDataProvider = ({children}) => {
 
    async function getTotalTrainee(user){
 
-    let response = await fetch ("http://127.0.0.1:8000/trainees/total_trainee_location/", {  
+    let response = await fetch (`${API_URL}trainees/total_trainee_location/`, {  
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -74,7 +75,7 @@ export const TotalDataProvider = ({children}) => {
 
    async function getTotalTrainer(user){
 
-    let response = await fetch ("http://127.0.0.1:8000/trainers/total_trainer_location/", {  
+    let response = await fetch (`${API_URL}trainers/total_trainer_location/`, {  
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -99,7 +100,7 @@ export const TotalDataProvider = ({children}) => {
 
    async function getTotalInterns(user){
 
-    let response = await fetch ("http://127.0.0.1:8000/interns/total_intern_location/", {  
+    let response = await fetch (`${API_URL}interns/total_intern_location/`, {  
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -124,7 +125,7 @@ export const TotalDataProvider = ({children}) => {
 
    async function getTotalRoles(user){
 
-    let response = await fetch ("http://127.0.0.1:8000/other_roles/total_other_roles_location/", {  
+    let response = await fetch (`${API_URL}other_roles/total_other_roles_location/`, {  
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -149,7 +150,7 @@ export const TotalDataProvider = ({children}) => {
 
    async function getTotalNYSC(user){
 
-    let response = await fetch ("http://127.0.0.1:8000/NYSC/total_NYSC_location/", {  
+    let response = await fetch (`${API_URL}NYSC/total_NYSC_location/`, {  
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

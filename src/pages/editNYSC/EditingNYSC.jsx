@@ -12,7 +12,7 @@ import { idID } from '@mui/material/locale';
 import AuthContext from '../../context/authContext';
 
 
-const EditNYSC = () => {
+const EditingNYSC = () => {
 
   const [file, setFile] = useState("");
   const [ImageFile, setFileImage] = useState(null);
@@ -135,4 +135,4 @@ const EditNYSC = () => {
   )
 }
 
-export default EditNYSC
+export default EditingNYSC
