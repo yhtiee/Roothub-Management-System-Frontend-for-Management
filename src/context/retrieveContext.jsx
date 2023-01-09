@@ -1,12 +1,15 @@
 import React, { useContext } from 'react'
 import { createContext, useState, useEffect } from "react";
-import API_URL from './API.JSX';
+// import API_URL from './API.JSX';
 
 const RetrieveContext = createContext()
 
 export default RetrieveContext
 
 export const RetrieveProvider = ({children}) => {
+
+    let API_URL = "https://web-production-0dc8.up.railway.app/"
+
 
     let [success, SetSuccess] = useState(null)
     let [error, setError] = useState(null)
