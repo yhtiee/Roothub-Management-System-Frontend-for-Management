@@ -123,9 +123,9 @@ const ListTrainees = () => {
         <Navbar/>
         <div className="info">
           <h4> Trainees </h4>
-          <a href="/newTrainee">
+          <Link to="/newTrainee">
             <button> Add Trainee</button>
-          </a>
+          </Link>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
         <Datatable value={data}/>
