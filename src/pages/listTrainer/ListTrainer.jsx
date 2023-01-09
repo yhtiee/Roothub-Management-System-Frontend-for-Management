@@ -5,7 +5,7 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import "./listTrainers.scss"
 import ListContext from '../../context/ListData';
 import RetrieveContext from '../../context/retrieveContext'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
 import AuthContext from '../../context/authContext'
@@ -73,19 +73,19 @@ const ListTrainer = () => {
             return (
                 <>
                     <div className='actions'>
-                        <a href="/trainer">
+                        <Link to="/trainer">
                           <button onClick={event => view(event, params)} className='view'>
                             View
                           </button>
-                        </a>
+                        </Link>
                         <button onClick={event => handleDeleteClick(event, params)} className='delete'>
                             Delete
                         </button>
-                        <a href="/editTrainer">
+                        <Link to="/editTrainer">
                           <button onClick={event => view(event, params)} className='edit'>
                             Edit
                           </button>
-                        </a>
+                        </Link>
                         <button className='move'>
                             Move
                         </button>
@@ -109,9 +109,9 @@ const ListTrainer = () => {
         <Navbar/>
         <div className="info">
           <h4> Trainers </h4>
-          <a href="/newTrainer">
+          <Link to="/newTrainer">
             <button> Add Trainer</button>
-          </a>
+          </Link>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
         <Datatable value={data}/>

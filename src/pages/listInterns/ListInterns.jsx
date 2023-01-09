@@ -5,7 +5,7 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import "./listInterns.scss"
 import ListContext from '../../context/ListData';
 import RetrieveContext from '../../context/retrieveContext'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
 import AuthContext from '../../context/authContext'
@@ -83,19 +83,19 @@ const ListInterns = () => {
           return (
               <>
                   <div className='actions'>
-                      <a href="/Intern">
+                      <Link to="/Intern">
                         <button onClick={event => view(event, params)} className='view'>
                           View
                         </button>
-                      </a>
+                      </Link>
                       <button onClick={event => handleDeleteClick(event, params)} className='delete'>
                           Delete
                       </button>
-                      <a href="/editIntern">
+                      <Link to="/editIntern">
                         <button onClick={event => view(event, params)} className='edit'>
                           Edit
                         </button>
-                      </a>
+                      </Link>
                       <button className='move'>
                           Move
                       </button>
@@ -124,9 +124,9 @@ const ListInterns = () => {
         <Navbar/>
         <div className="info">
           <h4> Interns </h4>
-          <a href="/newIntern">
+          <Link to="/newIntern">
             <button> Add Intern</button>
-          </a>
+          </Link>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
         <Datatable value={data}/>

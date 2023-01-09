@@ -123,7 +123,7 @@ const ListTrainees = () => {
         <Navbar/>
         <div className="info">
           <h4> Trainees </h4>
-          <Link to="/newTrainee">
+          <Link to="/newTrainee" >
             <button> Add Trainee</button>
           </Link>
         </div>

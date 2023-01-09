@@ -41,7 +41,7 @@ const Sidebar = () => {
               <span>Analysis</span>
             </li>
           </a>
-          <Link to ="https://web-production-0dc8.up.railway.app/admin/">
+          <Link to="https://web-production-0dc8.up.railway.app/admin/" target="blanK">
             <li>
               <SettingsIcon className='icon'/>
               <span> Admin Panel </span>

@@ -5,7 +5,7 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import "./listNYSC.scss"
 import ListContext from '../../context/ListData';
 import RetrieveContext from '../../context/retrieveContext'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
 import AuthContext from '../../context/authContext'
@@ -83,19 +83,19 @@ const ListNYSC = () => {
           return (
               <>
                   <div className='actions'>
-                      <a href="/NYSC">
+                      <Link to="/NYSC">
                         <button onClick={event => view(event, params)} className='view'>
                           View
                         </button>
-                      </a>
+                      </Link>
                       <button onClick={event => handleDeleteClick(event, params)} className='delete'>
                           Delete
                       </button>
-                      <a href="/editingNYSC">
+                      <Link to="/editingNYSC">
                         <button onClick={event => view(event, params)} className='edit'>
                           Edit
                         </button>
-                      </a>
+                      </Link>
                       <button className='move'>
                           Move
                       </button>
@@ -124,9 +124,9 @@ const ListNYSC = () => {
         <Navbar/>
         <div className="info">
           <h4> NYSC </h4>
-          <a href="/newNYSC">
+          <Link to="/newNYSC">
             <button> Add NYSC</button>
-          </a>
+          </Link>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
         <Datatable value={data}/>
