@@ -11,6 +11,7 @@ import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmatio
 import AuthContext from '../../context/authContext'
 // import 'react-bootstrap/dist/react-bootstrap.css'
 import PH from "../../assets/defaultimage.jpg"
+import LoadingAnimation from '../../components/loading/Loading'
 
 // import { shouldForwardProp } from '@mui/styled-engine'
 
@@ -20,6 +21,7 @@ const ListTrainees = () => {
   let {getTraineesList} = useContext(ListContext)
   let {traineesList} = useContext(ListContext)
   let {retrievedTrainee} = useContext(RetrieveContext)
+  let {retrievedEditTrainee} = useContext(RetrieveContext)
   let {retrievedData} = useContext(RetrieveContext)
   let {deleteTrainee} = useContext(CreateContext)
   // let {user} = useContext(AuthContext)
@@ -27,6 +29,8 @@ const ListTrainees = () => {
   let navigate = useNavigate()
   const [showModal, setShowModal] = useState(false);
   const [deleteId, setDeleteId] = useState(false)
+  const [msg, setDeleted] = useState("false")
+
 
   function handleDeleteClick(event, params) {
     setDeleteId(params.row.id)
@@ -41,15 +45,21 @@ const ListTrainees = () => {
     deleteTrainee(deleteId)
     getTraineesList(user)
     setShowModal(false);
+    // setDeleted("true")
   }
+
+  useEffect(() => {
+    getTraineesList(user)
+    // setDeleted("false")
+   }, [handleModalConfirm])
 
   
   let view = (event, params) => {
-    // console.log(params.row.id)
     retrievedTrainee(params.row.id)
-    // navigate(`${params.row.id}`)
-    console.log(retrievedData)
-  
+  }
+
+  let edit = (event, params) => {
+    retrievedEditTrainee(params.row.id)
   }
   
   const columns = [
@@ -68,37 +78,35 @@ const ListTrainees = () => {
           )
       }
     },
-    { field: 'last_name', headerName: 'Last name', width: 130 },
-    { field: 'first_name', headerName: 'First name', width: 130 },
-    { field: "course_learning", headerName: 'Course', width: 170 },
+    { field: 'last_name', headerName: 'Last name', width: 120 },
+    { field: 'first_name', headerName: 'First name', width: 100},
+    { field: "course_learning", headerName: 'Course', width: 200 },
     {field: "registrationDate", headerName: "Registration Date", width: 130},
+    {field: "training_fee", headerName: "Training Fee", width: 110},
     { field: 'amount_paid', headerName: 'Amount paid', width: 130 },
-    { field: 'balance', headerName: 'Balance', width: 130 },
+    { field: 'balance', headerName: 'Balance', width: 100 },
     {
       field: 'action',
       headerName: 'Actions',
       sortable: false,
-      width: 250,
+      width: 200,
       renderCell: (params) => {
           return (
               <>
                   <div className='actions'>
-                      <Link to="/trainee">
+                      {/* <Link to="/trainee"> */}
                         <button onClick={event => view(event, params)} className='view'>
                           View
                         </button>
-                      </Link>
+                      {/* </Link> */}
                       <button onClick={event => handleDeleteClick(event, params)} className='delete'>
                           Delete
                       </button>
-                      <Link to="/editTrainee">
-                        <button onClick={event => view(event, params)} className='edit'>
+                      {/* <Link to="/editTrainee"> */}
+                        <button onClick={event => edit(event, params)} className='edit'>
                           Edit
                         </button>
-                      </Link>
-                      <button className='move'>
-                          Move
-                      </button>
+                      {/* </Link> */}
                   </div>
               </>
           )
@@ -129,7 +137,7 @@ const ListTrainees = () => {
           </Link>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
-        <Datatable value={data}/>
+        {traineesList === []? <LoadingAnimation/>:<Datatable value={data}/>}
       </div>
     </div>
   )

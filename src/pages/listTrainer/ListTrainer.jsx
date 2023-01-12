@@ -86,9 +86,6 @@ const ListTrainer = () => {
                             Edit
                           </button>
                         </Link>
-                        <button className='move'>
-                            Move
-                        </button>
                     </div>
                 </>
             )

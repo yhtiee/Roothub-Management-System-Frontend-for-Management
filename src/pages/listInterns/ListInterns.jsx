@@ -96,9 +96,7 @@ const ListInterns = () => {
                           Edit
                         </button>
                       </Link>
-                      <button className='move'>
-                          Move
-                      </button>
+                      
                   </div>
               </>
           )

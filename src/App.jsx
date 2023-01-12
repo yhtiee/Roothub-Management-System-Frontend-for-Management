@@ -60,7 +60,7 @@ function App() {
                       <Route path="/trainees" element = {<PrivateRoute><ListTrainees/></PrivateRoute>} />
                       <Route path="/newtrainee" element = {<PrivateRoute><NewTrainees/></PrivateRoute>} />
                       <Route path="/trainee" element = {<PrivateRoute><Trainee/></PrivateRoute>} />
-                      <Route path="/edittrainee" element = {<PrivateRoute><EditTrainee/></PrivateRoute>} />
+                      <Route path="/editTrainee" element = {<PrivateRoute><EditTrainee/></PrivateRoute>} />
                       
                       <Route path="/trainers" element = {<ListTrainer/>} />
                       <Route path="/newTrainer" element = {<NewTrainer/>} />

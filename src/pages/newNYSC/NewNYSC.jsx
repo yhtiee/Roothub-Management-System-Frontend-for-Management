@@ -50,7 +50,7 @@ const NewNYSC = () => {
     formData.append("phone_number", phoneNumber);
     formData.append("location", Location);
     createNYSC(formData)
-    navigate("/listNYSC")
+    
    
   }
 

@@ -8,17 +8,22 @@ import { useRef, useContext, useEffect } from 'react'
 import CreateContext from '../../context/CreateData';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/authContext';
+import {useToast} from "@chakra-ui/toast"
+
 
 
 
 const NewTrainees = () => {
 
+  const toast = useToast()
   const [file, setFile] = useState("");
   const [selectedCourse, setSelectedCourse] = useState('Frontend Web Development');
   const [selectedDuration, setSelectedDuration] = useState('6 Months');
+  const [selectedFee, setSelectedFee] = useState(120000);
+
   let {createTrainee} = useContext(CreateContext)
-  let navigate = useNavigate()
-  // let {user} = useContext(AuthContext)
+  let {msg} = useContext(CreateContext)
+
   let user = "Uyo"
   
   const handleChangeCourse = (event) => {
@@ -27,6 +32,10 @@ const NewTrainees = () => {
 
   const handleChangeDuration = (event) => {
     setSelectedDuration(event.target.value);
+  };
+
+  const handleChangeFee = (event) => {
+    setSelectedFee(event.target.value);
   };
 
   let first = useRef()
@@ -52,6 +61,7 @@ const NewTrainees = () => {
     let Duration = selectedDuration
     let Location = location.current.value
     let Course = selectedCourse
+    let Fee = selectedFee
     let mypic = myfile.current.value
     // let pic = URL.createObjectURL(file)
     let formData = new FormData();
@@ -66,13 +76,10 @@ const NewTrainees = () => {
     formData.append("amount_paid", amountPaid);
     formData.append("balance", Balance);
     formData.append("location", Location);
+    formData.append("training_fee", Fee);
     createTrainee(formData)
-    navigate("/trainees")
-   
   }
 
-
- 
   return (
     <div className='new'>
       <Sidebar/>
@@ -126,6 +133,8 @@ const NewTrainees = () => {
                   <option value="Data Analysis">Data Analysis</option>
                   <option value="App Developement">App Developement</option>
                   <option value="Computer Basics">Computer Basics</option>
+                  <option value="Video Editing">Video Editing</option>
+                  <option value="Photography">Photography</option>
                 </select>
               </div>
               <div className="formInput">
@@ -135,6 +144,16 @@ const NewTrainees = () => {
                   <option value="4 Months">4 Months</option>
                   <option value="3 Months">3 Months</option>
                   <option value="1 Month">1 Month</option>
+                </select>
+              </div>
+              <div className="formInput">
+                <label>Training Fee</label>
+                <select id="training_fee" name="training_fee" value={selectedFee} onChange={handleChangeFee}>
+                  <option value="120000">120000</option>
+                  <option value="150000">150000</option>
+                  <option value="180000">180000</option>
+                  <option value="130000">130000</option>
+                  <option value="40000">40000</option>
                 </select>
               </div>
               <div className="formInput" style={{display:"none"}}>

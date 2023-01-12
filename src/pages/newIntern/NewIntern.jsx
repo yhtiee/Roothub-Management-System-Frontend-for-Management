@@ -50,7 +50,6 @@ const NewIntern = () => {
     formData.append("phone_number", phoneNumber);
     formData.append("location", Location);
     createIntern(formData)
-    navigate("/listInterns")
    
   }
 

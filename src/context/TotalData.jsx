@@ -41,6 +41,8 @@ export const TotalDataProvider = ({children}) => {
         if(response.status === 200){
             SetSuccess("Successfully Logged In")
             setTotalAlumni(data)
+            // console.log(totalTrainee)
+            // console.log(data)
         }
         // console.log(data)
     }

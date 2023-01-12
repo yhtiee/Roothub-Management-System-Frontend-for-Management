@@ -96,9 +96,7 @@ const ListNYSC = () => {
                           Edit
                         </button>
                       </Link>
-                      <button className='move'>
-                          Move
-                      </button>
+                      
                   </div>
               </>
           )

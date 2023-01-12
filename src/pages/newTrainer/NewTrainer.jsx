@@ -62,7 +62,6 @@ const NewTrainer = () => {
     formData.append("account_number", Account);
     formData.append("location", Location);
     createTrainer(formData)
-    navigate("/trainers")
    
   }
   return (
