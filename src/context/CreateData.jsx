@@ -65,7 +65,7 @@ export const CreateProvider = ({children}) => {
         }
         else{
             console.log("error")
-            setError("Error Occured")
+            // setError("Error Occured")
     
         }
     }
@@ -80,7 +80,6 @@ export const CreateProvider = ({children}) => {
         if (response.ok){
             let data = await response.json()
             if(response.status === 201){
-                SetSuccess("Successfully Created")  
                 // navigate("/trainees")
                 navigate("/listInterns")
 
@@ -89,7 +88,7 @@ export const CreateProvider = ({children}) => {
         }
         else{
             console.log("error")
-            setError("Error Occured")
+            // setError("Error Occured")
     
         }
     }
@@ -104,7 +103,6 @@ export const CreateProvider = ({children}) => {
         if (response.ok){
             let data = await response.json()
             if(response.status === 201){
-                SetSuccess("Successfully Logged In")  
                 // navigate("/trainees")
                 navigate("/listNYSC")
             }
@@ -112,7 +110,7 @@ export const CreateProvider = ({children}) => {
         }
         else{
             console.log("error")
-            setError("Error Occured")
+            // setError("Error Occured")
     
         }
     }
@@ -127,14 +125,13 @@ export const CreateProvider = ({children}) => {
         if (response.ok){
             let data = await response.json()
             if(response.status === 200){
-                SetSuccess("Successfully Created") 
                 // navigate("/trainees")
             }
             console.log(data)
         }
         else{
             console.log("error")
-            setError("Error Occured")
+            
     
         }
     }

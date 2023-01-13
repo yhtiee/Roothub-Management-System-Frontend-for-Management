@@ -5,25 +5,19 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import "./listInterns.scss"
 import ListContext from '../../context/ListData';
 import RetrieveContext from '../../context/retrieveContext'
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
-import AuthContext from '../../context/authContext'
-// import 'react-bootstrap/dist/react-bootstrap.css'
 
-// import { shouldForwardProp } from '@mui/styled-engine'
 
 const ListInterns = () => {
-  // let user = "smart"
-
   let {getInternsList} = useContext(ListContext)
   let {internsList} = useContext(ListContext)
   let {retrievedIntern} = useContext(RetrieveContext)
-  let {retrievedInternData} = useContext(RetrieveContext)
+  let {retrievedEditIntern} = useContext(RetrieveContext)
   let {deleteIntern} = useContext(CreateContext)
-  // let {user} = useContext(AuthContext)
   let user = "Uyo"
-  let navigate = useNavigate()
+
   const [showModal, setShowModal] = useState(false);
   const [deleteId, setDeleteId] = useState(false)
 
@@ -39,16 +33,19 @@ const ListInterns = () => {
   function handleModalConfirm() {
     deleteIntern(deleteId)
     setShowModal(false);
-    window.location.reload()
   }
+
+  useEffect(() => {
+    getInternsList(user)
+   }, [handleModalConfirm])
 
   
   let view = (event, params) => {
-    // console.log(params.row.id)
     retrievedIntern(params.row.id)
-    // navigate(`${params.row.id}`)
-    console.log(retrievedInternData)
-  
+  }
+
+  let edit = (event, params) => {
+    retrievedEditIntern(params.row.id)
   }
   
   const columns = [
@@ -67,13 +64,13 @@ const ListInterns = () => {
           )
       }
     },
-    { field: 'last_name', headerName: 'Last name', width: 130 },
-    { field: 'first_name', headerName: 'First name', width: 130 },
-    { field: 'email', headerName: 'Email', width: 270},
-    // { field: 'phone_number', headerName: 'Phone Number', width: 130 },
-    { field: 'attached_area', headerName: 'Attached Area', width: 150 },
+    { field: 'last_name', headerName: 'Last name', width: 120 },
+    { field: 'first_name', headerName: 'First name', width: 100 },
+    { field: "course_learning", headerName: 'Course', width: 200 },
     {field: "registrationDate", headerName: "Registration Date", width: 130},
-    
+    {field: "training_fee", headerName: "Training Fee", width: 110},
+    { field: 'amount_paid', headerName: 'Amount paid', width: 130 },
+    { field: 'balance', headerName: 'Balance', width: 100 },
     {
       field: 'action',
       headerName: 'Actions',
@@ -83,20 +80,15 @@ const ListInterns = () => {
           return (
               <>
                   <div className='actions'>
-                      <Link to="/Intern">
                         <button onClick={event => view(event, params)} className='view'>
                           View
                         </button>
-                      </Link>
                       <button onClick={event => handleDeleteClick(event, params)} className='delete'>
                           Delete
                       </button>
-                      <Link to="/editIntern">
-                        <button onClick={event => view(event, params)} className='edit'>
+                        <button onClick={event => edit(event, params)} className='edit'>
                           Edit
-                        </button>
-                      </Link>
-                      
+                        </button>                     
                   </div>
               </>
           )
@@ -104,11 +96,6 @@ const ListInterns = () => {
     },
   ];
   
-  
-
-  
-  console.log(internsList)
-
   useEffect(() => {
    getInternsList(user)
   }, [])

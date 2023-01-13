@@ -14,19 +14,34 @@ const NewIntern = () => {
 
   const [file, setFile] = useState("");
   let {createIntern} = useContext(CreateContext)
-  let navigate = useNavigate()
-  // let {user} = useContext(AuthContext)
+  const [selectedCourse, setSelectedCourse] = useState('Frontend Web Development');
+  const [selectedDuration, setSelectedDuration] = useState('6 Months');
+  const [selectedFee, setSelectedFee] = useState(120000);
+
   let user = "Uyo"
 
+  const handleChangeCourse = (event) => {
+    setSelectedCourse(event.target.value);
+  };
+
+  const handleChangeDuration = (event) => {
+    setSelectedDuration(event.target.value);
+  };
+
+  const handleChangeFee = (event) => {
+    setSelectedFee(event.target.value);
+  };
 
   let first = useRef()
   let last = useRef()
   let other = useRef()
+  let amount = useRef()
+  let balance = useRef()
   let myfile = useRef()
   let location = useRef()
   let phone = useRef()
   let email = useRef()
-  let area = useRef()
+
 
 
   let submitForm = (e) => {
@@ -36,21 +51,26 @@ const NewIntern = () => {
     let otherName = other.current.value
     let Email = email.current.value
     let phoneNumber = phone.current.value
+    let amountPaid = amount.current.value
+    let Balance = balance.current.value
+    let Duration = selectedDuration
+    let Course = selectedCourse
+    let Fee = selectedFee
     let Location = location.current.value
-    let Area = area.current.value
-    let mypic = myfile.current.value
-    let pic = URL.createObjectURL(file)
     let formData = new FormData();
     formData.append("profile_picture", file);
     formData.append('first_name', firstName);
-    formData.append('attached_area', Area);
     formData.append("last_name", lastName);
     formData.append("other_names", otherName);
     formData.append("email", Email);
+    formData.append("course_learning", Course);
+    formData.append("course_duration", Duration);
+    formData.append("amount_paid", amountPaid);
+    formData.append("balance", Balance);
     formData.append("phone_number", phoneNumber);
+    formData.append("training_fee", Fee);
     formData.append("location", Location);
     createIntern(formData)
-   
   }
 
  
@@ -97,14 +117,50 @@ const NewIntern = () => {
                 <input type="number" required ref={phone}/>
               </div>
               <div className="formInput">
-                <label>Area Attached</label>
-                <input type="text" required ref={area}/>
+                <label>Course</label>
+                <select id="course" name="course" value={selectedCourse} onChange={handleChangeCourse} >
+                  <option value="Frontend Web Development">Frontend Web Development</option>
+                  <option value="Backend Web Development">Backend Web Development</option>
+                  <option value="Full Stack Web Development">Full Stack Web Development</option>
+                  <option value="Visual Communications">Visual Communications</option>
+                  <option value="UI/UX">UI/UX</option>
+                  <option value="Data Analysis">Data Analysis</option>
+                  <option value="App Developement">App Developement</option>
+                  <option value="Computer Basics">Computer Basics</option>
+                  <option value="Video Editing">Video Editing</option>
+                  <option value="Photography">Photography</option>
+                </select>
+              </div>
+              <div className="formInput">
+                <label>Course Duration</label>
+                <select id="course_duration" name="course_duration" value={selectedDuration} onChange={handleChangeDuration}>
+                  <option value="6 Months">6 Months</option>
+                  <option value="4 Months">4 Months</option>
+                  <option value="3 Months">3 Months</option>
+                  <option value="1 Month">1 Month</option>
+                </select>
+              </div>
+              <div className="formInput">
+                <label>Training Fee</label>
+                <select id="training_fee" name="training_fee" value={selectedFee} onChange={handleChangeFee}>
+                  <option value="20000">120000</option>
+                  <option value="20000">80000</option>
+                  <option value="20000">60000</option>
+                  <option value="20000">20000</option>
+                </select>
               </div>
               <div className="formInput" style={{display:"none"}}>
                 <label>Location</label>
                 <input type="text" defaultValue={user} required ref={location} />
               </div>
-              
+              <div className="formInput">
+                <label>Amount Paid</label>
+                <input type="number" required ref={amount}/>
+              </div>
+              <div className="formInput">
+                <label>Balance</label>
+                <input type="number" required ref={balance}/>
+              </div>
               {/* <Link to="/trainees"> */}
                 <button type='submit'>
                   Add

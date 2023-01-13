@@ -55,15 +55,15 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/trainers">
+            <Link to="/ListInterns">
             <PersonOutlineOutlinedIcon className='icon'/>
-            <span> Trainers </span>
+            <span> Interns </span>
             </Link>
           </li>
           <li>
-            <Link to="/alumni">
+            <Link to="/trainers">
             <PersonOutlineOutlinedIcon className='icon'/>
-            <span> Alumni </span>
+            <span> Trainers </span>
             </Link>
           </li>
           <li>
@@ -73,14 +73,14 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/alumni">
             <PersonOutlineOutlinedIcon className='icon'/>
-            <span> Other Roles </span>
+            <span> Alumni </span>
+            </Link>
           </li>
           <li>
-            <Link to="/ListInterns">
             <PersonOutlineOutlinedIcon className='icon'/>
-            <span> Interns </span>
-            </Link>
+            <span> Other Roles </span>
           </li>
           
           {/* <p className="title"> BRANCH MANAGERS </p>

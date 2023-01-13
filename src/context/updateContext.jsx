@@ -67,6 +67,7 @@ export const UpdateProvider = ({children}) => {
             let data = await response.json()
             if(response.status === 200){
                 SetSuccess("Successfully Logged In")  
+                navigate("/ListInterns")
             }
             console.log(data)
         }

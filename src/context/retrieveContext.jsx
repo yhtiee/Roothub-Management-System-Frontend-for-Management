@@ -173,8 +173,7 @@ export const RetrieveProvider = ({children}) => {
                 let trainee = JSON.parse(localStorage.getItem("intern"))
                 trainee = data
                 localStorage.setItem("intern", JSON.stringify(trainee))  
-               
-
+                navigate("/intern")
             }
             console.log(data)
             setRetrievedData(retrievedData)

@@ -5,32 +5,25 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import "./listTraines.scss"
 import ListContext from '../../context/ListData';
 import RetrieveContext from '../../context/retrieveContext'
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
-import AuthContext from '../../context/authContext'
-// import 'react-bootstrap/dist/react-bootstrap.css'
 import PH from "../../assets/defaultimage.jpg"
 import LoadingAnimation from '../../components/loading/Loading'
 
-// import { shouldForwardProp } from '@mui/styled-engine'
+
 
 const ListTrainees = () => {
-  // let user = "smart"
+
 
   let {getTraineesList} = useContext(ListContext)
   let {traineesList} = useContext(ListContext)
   let {retrievedTrainee} = useContext(RetrieveContext)
   let {retrievedEditTrainee} = useContext(RetrieveContext)
-  let {retrievedData} = useContext(RetrieveContext)
   let {deleteTrainee} = useContext(CreateContext)
-  // let {user} = useContext(AuthContext)
   let user = "Uyo"
-  let navigate = useNavigate()
   const [showModal, setShowModal] = useState(false);
   const [deleteId, setDeleteId] = useState(false)
-  const [msg, setDeleted] = useState("false")
-
 
   function handleDeleteClick(event, params) {
     setDeleteId(params.row.id)
@@ -45,12 +38,10 @@ const ListTrainees = () => {
     deleteTrainee(deleteId)
     getTraineesList(user)
     setShowModal(false);
-    // setDeleted("true")
   }
 
   useEffect(() => {
     getTraineesList(user)
-    // setDeleted("false")
    }, [handleModalConfirm])
 
   
@@ -94,30 +85,23 @@ const ListTrainees = () => {
           return (
               <>
                   <div className='actions'>
-                      {/* <Link to="/trainee"> */}
+
                         <button onClick={event => view(event, params)} className='view'>
                           View
                         </button>
-                      {/* </Link> */}
                       <button onClick={event => handleDeleteClick(event, params)} className='delete'>
                           Delete
                       </button>
-                      {/* <Link to="/editTrainee"> */}
                         <button onClick={event => edit(event, params)} className='edit'>
                           Edit
                         </button>
-                      {/* </Link> */}
                   </div>
               </>
           )
       }
     },
   ];
-  
-  
 
-  
-  console.log(traineesList)
 
   useEffect(() => {
    getTraineesList(user)

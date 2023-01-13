@@ -72,8 +72,6 @@ const EditTrainee = () => {
     let Location = location.current.value
     let Course = selectedCourse
     let Fee = selectedFee
-    let mypic = myfile.current.value
-    // let pic = URL.createObjectURL(file)
     let userId = traineeData.id
     let formData = new FormData();
     formData.append("profile_picture", file? file : ImageFile);

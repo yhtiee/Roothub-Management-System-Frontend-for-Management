@@ -62,8 +62,8 @@ const ListTrainer = () => {
       { field: 'last_name', headerName: 'Last name', width: 130 },
       { field: 'first_name', headerName: 'First name', width: 130 },
       { field: "course_teaching", headerName: 'Course', width: 220 },
-      {field: "registrationDate", headerName: "Registration Date", width: 130},
-      { field: 'qualification', headerName: 'Qualification', width: 220 },
+      {field: "registrationDate", headerName: "Registration Date", width: 150},
+      { field: 'qualification', headerName: 'Qualification', width: 270 },
       {
         field: 'action',
         headerName: 'Actions',
