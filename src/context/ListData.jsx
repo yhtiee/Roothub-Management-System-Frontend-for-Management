@@ -12,6 +12,7 @@ export const ListProvider = ({children}) => {
 
     let API_URL = "https://web-production-0dc8.up.railway.app/"
 
+    const [dataFetched, setDataFetched] = useState(false)
     let [traineesList, setTraineesList] = useState([])
     let [trainersList, setTrainersList] = useState([])
     let [internsList, setInternsList] = useState([])
@@ -34,14 +35,15 @@ export const ListProvider = ({children}) => {
             },
             body: JSON.stringify({'username': user})
         })
-        console.log(response)
+        // console.log(response)
         if (response.ok){
             let data = await response.json()
             if(response.status === 200){
                 SetSuccess("Successfully Logged In")
                 setTraineesList(data)   
+                setDataFetched(true)
+                // console.log(dataFetched)
             }
-            console.log(data)
         }
         else{
             console.log("error")
@@ -65,8 +67,9 @@ export const ListProvider = ({children}) => {
             if(response.status === 200){
                 SetSuccess("Successfully Logged In")
                 setTrainersList(data)   
+                setDataFetched(true)
             }
-            console.log(data)
+ 
         }
         else{
             console.log("error")
@@ -90,8 +93,8 @@ export const ListProvider = ({children}) => {
             if(response.status === 200){
                 SetSuccess("Successfully Logged In")
                 setInternsList(data)   
+                setDataFetched(true)
             }
-            console.log(data)
         }
         else{
             console.log("error")
@@ -114,9 +117,10 @@ export const ListProvider = ({children}) => {
             let data = await response.json()
             if(response.status === 200){
                 SetSuccess("Successfully Logged In")
-                setAlumniList(data)   
+                setAlumniList(data)  
+                setDataFetched(true) 
             }
-            console.log(data)
+       
         }
         else{
             console.log("error")
@@ -140,8 +144,9 @@ export const ListProvider = ({children}) => {
             if(response.status === 200){
                 SetSuccess("Successfully Logged In")
                 setNYSCList(data)   
+                setDataFetched(true)
             }
-            console.log(data)
+           
         }
         else{
             console.log("error")
@@ -164,9 +169,10 @@ export const ListProvider = ({children}) => {
             let data = await response.json()
             if(response.status === 200){
                 SetSuccess("Successfully Logged In")
-                setRolesList(data)   
+                setRolesList(data)  
+                setDataFetched(true) 
             }
-            console.log(data)
+         
         }
         else{
             console.log("error")
@@ -188,7 +194,8 @@ export const ListProvider = ({children}) => {
         NYSCList : NYSCList,
         rolesList : rolesList,
         traineesList: traineesList,
-        trainersList: trainersList
+        trainersList: trainersList,
+        dataFetched : dataFetched
        }
 
 

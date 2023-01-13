@@ -10,6 +10,7 @@ import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
 import AuthContext from '../../context/authContext'
 import PH from "../../assets/defaultimage.jpg"
+import LoadingAnimation from '../../components/loading/Loading'
 
 
 
@@ -18,6 +19,7 @@ const ListNYSC = () => {
   let {getNYSCList} = useContext(ListContext)
   let {NYSCList} = useContext(ListContext)
   let {retrievedNYSC} = useContext(RetrieveContext)
+  let {dataFetched} = useContext(ListContext)
   let {retrievedEditNYSC} = useContext(RetrieveContext)
   let {deleteNYSC} = useContext(CreateContext)
   // let {user} = useContext(AuthContext)
@@ -122,7 +124,7 @@ const ListNYSC = () => {
           </Link>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
-        <Datatable value={data}/>
+        {!dataFetched? <div className='loader'><LoadingAnimation/></div>:<Datatable value={data}/>}
       </div>
     </div>
   )

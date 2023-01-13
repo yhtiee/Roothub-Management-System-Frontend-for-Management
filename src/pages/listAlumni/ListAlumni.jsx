@@ -9,10 +9,12 @@ import { Link, useNavigate } from "react-router-dom";
 import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
 import AuthContext from '../../context/authContext'
+import LoadingAnimation from '../../components/loading/Loading'
 
 const ListAlumni = () => {
     let {getAlumniList} = useContext(ListContext)
     let {alumniList} = useContext(ListContext)
+    let {dataFetched} = useContext(ListContext)
     let {retrievedAlumni} = useContext(RetrieveContext)
     let {retrievedAlumniData} = useContext(RetrieveContext)
     let {deleteAlumni} = useContext(CreateContext)
@@ -109,7 +111,7 @@ const ListAlumni = () => {
           <h4> Alumni </h4>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
-        <Datatable value={data}/>
+        {!dataFetched? <div className='loader'><LoadingAnimation/></div>:<Datatable value={data}/>}
       </div>
     </div>
   )

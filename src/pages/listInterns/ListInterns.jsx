@@ -9,12 +9,14 @@ import { Link} from "react-router-dom";
 import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
 import PH from "../../assets/defaultimage.jpg"
+import LoadingAnimation from '../../components/loading/Loading'
 
 
 
 const ListInterns = () => {
   let {getInternsList} = useContext(ListContext)
   let {internsList} = useContext(ListContext)
+  let {dataFetched} = useContext(ListContext)
   let {retrievedIntern} = useContext(RetrieveContext)
   let {retrievedEditIntern} = useContext(RetrieveContext)
   let {deleteIntern} = useContext(CreateContext)
@@ -116,7 +118,7 @@ const ListInterns = () => {
           </Link>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
-        <Datatable value={data}/>
+        {!dataFetched? <div className='loader'><LoadingAnimation/></div>:<Datatable value={data}/>}
       </div>
     </div>
   )

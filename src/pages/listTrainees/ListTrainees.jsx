@@ -15,9 +15,10 @@ import LoadingAnimation from '../../components/loading/Loading'
 
 const ListTrainees = () => {
 
-
+  
   let {getTraineesList} = useContext(ListContext)
   let {traineesList} = useContext(ListContext)
+  let {dataFetched} = useContext(ListContext)
   let {retrievedTrainee} = useContext(RetrieveContext)
   let {retrievedEditTrainee} = useContext(RetrieveContext)
   let {deleteTrainee} = useContext(CreateContext)
@@ -121,7 +122,7 @@ const ListTrainees = () => {
           </Link>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
-        {<Datatable value={data}/>}
+        {!dataFetched? <div className='loader'><LoadingAnimation/></div>:<Datatable value={data}/>}
       </div>
     </div>
   )

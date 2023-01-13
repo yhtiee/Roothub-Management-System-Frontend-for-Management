@@ -10,10 +10,12 @@ import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
 import PH from "../../assets/defaultimage.jpg"
 import AuthContext from '../../context/authContext'
+import LoadingAnimation from '../../components/loading/Loading'
 
 const ListTrainer = () => {
     let {getTrainersList} = useContext(ListContext)
     let {trainersList} = useContext(ListContext)
+    let {dataFetched} = useContext(ListContext)
     let {retrievedTrainer} = useContext(RetrieveContext)
     let {retrievedEditTrainer} = useContext(RetrieveContext)
     let {deleteTrainer} = useContext(CreateContext)
@@ -112,7 +114,7 @@ const ListTrainer = () => {
           </Link>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
-        <Datatable value={data}/>
+        {!dataFetched? <div className='loader'><LoadingAnimation/></div>:<Datatable value={data}/>}
       </div>
     </div>
   )
