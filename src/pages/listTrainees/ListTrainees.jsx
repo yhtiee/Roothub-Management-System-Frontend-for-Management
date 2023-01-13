@@ -121,7 +121,7 @@ const ListTrainees = () => {
           </Link>
         </div>
         <DeleteConfirmation show={showModal} onHide={handleModalClose} onConfirm={handleModalConfirm}/>
-        {traineesList === []? <LoadingAnimation/>:<Datatable value={data}/>}
+        {<Datatable value={data}/>}
       </div>
     </div>
   )

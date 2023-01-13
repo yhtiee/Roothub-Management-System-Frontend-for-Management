@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {useToast} from "@chakra-ui/toast"
-// import API_URL from "./API.JSX";
+import API_URL from "./API.JSX";
 
 
 const CreateContext = createContext()
@@ -9,8 +9,6 @@ const CreateContext = createContext()
 export default CreateContext
 
 export const CreateProvider = ({children}) => {
-
-    let API_URL = "https://web-production-0dc8.up.railway.app/"
 
     const toast = useToast()
     let [msg, SetMsg] = useState(null)
@@ -47,17 +45,13 @@ export const CreateProvider = ({children}) => {
     }
 
     async function createTrainer(formData){
-        // console.log(formData)
         let response = await fetch(`${API_URL}trainers/create_trainer/`, {
             method: "POST",
             body: formData
         })
-        console.log(response)
         if (response.ok){
             let data = await response.json()
             if(response.status === 201){
-                SetSuccess("Successfully Created") 
-                // navigate("/trainees")
                 navigate("/trainers")
 
             }
@@ -65,7 +59,6 @@ export const CreateProvider = ({children}) => {
         }
         else{
             console.log("error")
-            // setError("Error Occured")
     
         }
     }

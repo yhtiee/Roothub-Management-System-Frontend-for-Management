@@ -8,13 +8,14 @@ import RetrieveContext from '../../context/retrieveContext'
 import { Link, useNavigate } from "react-router-dom";
 import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
+import PH from "../../assets/defaultimage.jpg"
 import AuthContext from '../../context/authContext'
 
 const ListTrainer = () => {
     let {getTrainersList} = useContext(ListContext)
     let {trainersList} = useContext(ListContext)
     let {retrievedTrainer} = useContext(RetrieveContext)
-    let {retrievedTrainerData} = useContext(RetrieveContext)
+    let {retrievedEditTrainer} = useContext(RetrieveContext)
     let {deleteTrainer} = useContext(CreateContext)
     let user = "Uyo"
     let navigate = useNavigate()
@@ -34,13 +35,18 @@ const ListTrainer = () => {
       deleteTrainer(deleteId)
       getTrainersList(user)
       setShowModal(false);
-      window.location.reload()
     }
-  
+
+    useEffect(() => {
+      getTrainersList(user)
+    }, [handleModalConfirm])
     
     let view = (event, params) => {
       retrievedTrainer(params.row.id)
-      console.log(retrievedTrainerData)
+    }
+
+    let edit = (event, params) => {
+      retrievedEditTrainer(params.row.id)
     }
     
     const columns = [
@@ -53,7 +59,7 @@ const ListTrainer = () => {
             return (
                 <>
                   <div className ="imageContainer">
-                    <img className="cellImage" src={params.row.profile_picture} alt="profile" />
+                  <img className="cellImage" src={params.row.profile_picture? params.row.profile_picture: PH } alt="profile" />
                   </div>
                 </>
             )
@@ -61,31 +67,27 @@ const ListTrainer = () => {
       },
       { field: 'last_name', headerName: 'Last name', width: 130 },
       { field: 'first_name', headerName: 'First name', width: 130 },
-      { field: "course_teaching", headerName: 'Course', width: 220 },
+      { field: "course_teaching", headerName: 'Course', width: 210 },
       {field: "registrationDate", headerName: "Registration Date", width: 150},
       { field: 'qualification', headerName: 'Qualification', width: 270 },
       {
         field: 'action',
         headerName: 'Actions',
         sortable: false,
-        width: 250,
+        width: 200,
         renderCell: (params) => {
             return (
                 <>
-                    <div className='actions'>
-                        <Link to="/trainer">
+                    <div className='actions'> 
                           <button onClick={event => view(event, params)} className='view'>
                             View
                           </button>
-                        </Link>
                         <button onClick={event => handleDeleteClick(event, params)} className='delete'>
                             Delete
                         </button>
-                        <Link to="/editTrainer">
-                          <button onClick={event => view(event, params)} className='edit'>
+                          <button onClick={event => edit(event, params)} className='edit'>
                             Edit
                           </button>
-                        </Link>
                     </div>
                 </>
             )
@@ -95,7 +97,6 @@ const ListTrainer = () => {
     
     useEffect(() => {
         getTrainersList(user)
-        console.log(trainersList)
     }, [])
   
     let data = {"rows":trainersList, "columns":columns}

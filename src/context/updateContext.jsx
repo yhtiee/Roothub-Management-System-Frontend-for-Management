@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState} from "react";
 import { useNavigate } from 'react-router-dom';
-// import API_URL from './API';
+import API_URL from './API';
 
 
 const UpdateContext = createContext()
@@ -9,8 +9,6 @@ const UpdateContext = createContext()
 export default UpdateContext
 
 export const UpdateProvider = ({children}) => {
-
-    let API_URL = "https://web-production-0dc8.up.railway.app/"
 
     let navigate = useNavigate()
     let [success, SetSuccess] = useState(null)

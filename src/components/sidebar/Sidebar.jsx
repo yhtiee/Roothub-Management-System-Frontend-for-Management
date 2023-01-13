@@ -29,22 +29,15 @@ const Sidebar = () => {
         <ul>
           <p className="title">MAIN</p>
           <li>
-            <a href="/">
+            <Link to="/">
               <DashboardIcon className='icon'/>
               <span> Dashboard </span>
-            </a>
+            </Link>
           </li>
-          <p className="title">SERVICES</p>
           <a href="">
             <li>
               <SettingsIcon className='icon'/>
               <span>Analysis</span>
-            </li>
-          </a>
-          <a href="https://web-production-0dc8.up.railway.app/admin/" target="_blank" rel="noreferrer">
-            <li>
-              <SettingsIcon className='icon'/>
-              <span> Admin Panel </span>
             </li>
           </a>
           <p className="title">LIST</p>
@@ -78,26 +71,27 @@ const Sidebar = () => {
             <span> Alumni </span>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <PersonOutlineOutlinedIcon className='icon'/>
             <span> Other Roles </span>
-          </li>
-          
-          {/* <p className="title"> BRANCH MANAGERS </p>
-          <li>
-            <AccountCircleIcon className='icon'/>
-            <span> Profile </span>
           </li> */}
+          <p className="title">SERVICES</p>
+          <a href="https://web-production-0dc8.up.railway.app/admin/" target="_blank" rel="noreferrer">
+            <li>
+              <SettingsIcon className='icon'/>
+              <span> Admin Panel </span>
+            </li>
+          </a>
           <li onClick={handleClick}>
             <ExitToAppIcon className='icon'/>
             <span> Logout </span>
           </li>
         </ul>
       </div>
-      <div className="bottom">
+      {/* <div className="bottom">
         <div className="colorOption"></div>
         <div className="colorOption"></div>
-      </div>
+      </div> */}
     </div>
   )
 }

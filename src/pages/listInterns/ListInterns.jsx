@@ -8,6 +8,8 @@ import RetrieveContext from '../../context/retrieveContext'
 import { Link} from "react-router-dom";
 import CreateContext from '../../context/CreateData'
 import DeleteConfirmation from '../../components/deleteConfirm/DeleteConfirmation'
+import PH from "../../assets/defaultimage.jpg"
+
 
 
 const ListInterns = () => {
@@ -58,7 +60,7 @@ const ListInterns = () => {
           return (
               <>
                 <div className ="imageContainer">
-                  <img className="cellImage" src={params.row.profile_picture} alt="profile" />
+                <img className="cellImage" src={params.row.profile_picture? params.row.profile_picture: PH } alt="profile" />
                 </div>
               </>
           )
@@ -75,7 +77,7 @@ const ListInterns = () => {
       field: 'action',
       headerName: 'Actions',
       sortable: false,
-      width: 250,
+      width: 200,
       renderCell: (params) => {
           return (
               <>

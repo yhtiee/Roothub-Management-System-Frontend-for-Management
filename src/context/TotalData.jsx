@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { createContext, useState, useEffect } from "react";
-// import API_URL from './API';
+import API_URL from './API';
 
 const DataContext = createContext()
 
@@ -8,7 +8,7 @@ export default DataContext
 
 export const TotalDataProvider = ({children}) => {
 
-    let API_URL = "https://web-production-0dc8.up.railway.app/"
+
 
 
     let [success, SetSuccess] = useState(null)

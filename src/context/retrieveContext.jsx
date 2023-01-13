@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-// import API_URL from './API.JSX';
+import API_URL from './API.JSX';
 
 const RetrieveContext = createContext()
 
@@ -9,7 +9,7 @@ export default RetrieveContext
 
 export const RetrieveProvider = ({children}) => {
 
-    let API_URL = "https://web-production-0dc8.up.railway.app/"
+   
 
 
     let [success, SetSuccess] = useState(null)
@@ -47,8 +47,7 @@ export const RetrieveProvider = ({children}) => {
                 localStorage.setItem("trainee", JSON.stringify(trainee))   
                 navigate("/trainee")
             }
-            console.log(data)
-            // setRetrievedData(retrievedData)
+
         }
         else{
             console.log("error")
@@ -79,8 +78,7 @@ export const RetrieveProvider = ({children}) => {
                 localStorage.setItem("trainee", JSON.stringify(trainee))   
                 navigate("/editTrainee")
             }
-            console.log(data)
-            // setRetrievedData(retrievedData)
+
         }
         else{
             console.log("error")
@@ -109,13 +107,12 @@ export const RetrieveProvider = ({children}) => {
                 let trainee = JSON.parse(localStorage.getItem("trainer"))
                 trainee = data
                 localStorage.setItem("trainer", JSON.stringify(trainee))   
+                navigate("/trainer")
             }
-            console.log(data)
-            // setRetrievedData(retrievedData)
+
         }
         else{
             console.log("error")
-            setError("Invalid Username or Password")
     
         }
     }
@@ -143,12 +140,9 @@ export const RetrieveProvider = ({children}) => {
                 navigate("/editTrainer")
 
             }
-            console.log(data)
-            // setRetrievedData(retrievedData)
         }
         else{
             console.log("error")
-            setError("Invalid Username or Password")
     
         }
     }
@@ -175,12 +169,10 @@ export const RetrieveProvider = ({children}) => {
                 localStorage.setItem("intern", JSON.stringify(trainee))  
                 navigate("/intern")
             }
-            console.log(data)
             setRetrievedData(retrievedData)
         }
         else{
             console.log("error")
-            setError("Invalid Username or Password")
     
         }
     }
@@ -207,12 +199,10 @@ export const RetrieveProvider = ({children}) => {
                 localStorage.setItem("intern", JSON.stringify(trainee))   
                 navigate("/editIntern")
             }
-            console.log(data)
             setRetrievedData(retrievedData)
         }
         else{
             console.log("error")
-            setError("Invalid Username or Password")
     
         }
     }
@@ -300,9 +290,9 @@ export const RetrieveProvider = ({children}) => {
                 let trainee = JSON.parse(localStorage.getItem("NYSC"))
                 trainee = data
                 localStorage.setItem("NYSC", JSON.stringify(trainee))   
+                navigate("/NYSC")
             }
-            console.log(data)
-            // setRetrievedData(retrievedData)
+
         }
         else{
             console.log("error")
@@ -331,10 +321,8 @@ export const RetrieveProvider = ({children}) => {
                 let trainee = JSON.parse(localStorage.getItem("NYSC"))
                 trainee = data
                 localStorage.setItem("NYSC", JSON.stringify(trainee))   
-                navigate("/editNYSC")
+                navigate("/editingNYSC")
             }
-            console.log(data)
-            // setRetrievedData(retrievedData)
         }
         else{
             console.log("error")
