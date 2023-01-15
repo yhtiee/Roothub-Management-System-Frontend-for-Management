@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { createContext, useState, useEffect } from "react";
-// import API_URL from './API';
+import API_URL from './API';
 
 const DataContext = createContext()
 
@@ -8,7 +8,7 @@ export default DataContext
 
 export const TotalDataProvider = ({children}) => {
 
-    let API_URL = "https://web-production-0dc8.up.railway.app/"
+    // let API_URL = "https://web-production-0dc8.up.railway.app/"
 
 
     let [success, SetSuccess] = useState(null)
@@ -19,12 +19,36 @@ export const TotalDataProvider = ({children}) => {
     let [totalIntern, setTotalIntern] = useState(null)
     let [totalRoles, setTotalRoles] = useState(null)
     let [totalNYSC, setTotalNYSC] = useState(null)
+    let [popularCourse, setPopularCourse] = useState({})
 
 
+    async function getPopularCourses(user){
 
-
-
+        let response = await fetch (`${API_URL}courses/popular_courses/`, {  
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'username': user})
+        })
+        console.log(response)
+        if (response.ok){
+            let data = await response.json()
+            if(response.status === 200){
+                SetSuccess("Successfully Logged In")
+                setPopularCourse(data)
+                // console.log(totalTrainee)
+                console.log(popularCourse)
+                console.log(data)
+            }
+            // console.log(data)
+        }
+        else{
+            console.log("error")
+            setError("Invalid Username or Password")
     
+        }
+       } 
 
    async function getTotalAlumni(user){
 
@@ -193,7 +217,10 @@ export const TotalDataProvider = ({children}) => {
     totalRoles: totalRoles,
     getTotalRoles : getTotalRoles,
     totalNYSC : totalNYSC,
-    getTotalNYSC : getTotalNYSC
+    getTotalNYSC : getTotalNYSC,
+    getPopularCourses: getPopularCourses,
+    popularCourse : popularCourse,
+
    }
   
   return (

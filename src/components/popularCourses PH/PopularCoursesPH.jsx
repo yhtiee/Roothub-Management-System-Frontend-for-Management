@@ -7,9 +7,9 @@ import DataContext from '../../context/TotalData'
 import { useEffect } from 'react'
 import AuthContext from '../../context/authContext'
 
-const PopularCourses = () => {
+const PopularCoursesPH = () => {
   
-    let user = "General"
+    let user = "PH"
     let {popularCourse} = useContext(DataContext)
     let {getPopularCourses} = useContext(DataContext)
 
@@ -77,4 +77,4 @@ const PopularCourses = () => {
   )
 }
 
-export default PopularCourses
+export default PopularCoursesPH

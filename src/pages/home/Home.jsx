@@ -38,7 +38,6 @@ const Home = () => {
     general()
   }, [])
   
-
   let ibadan = () => {
     setWidget("ibadan")
     let user = "Ibadan"
