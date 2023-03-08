@@ -19,6 +19,8 @@ const NewTrainees = () => {
   const [file, setFile] = useState("");
   const [selectedCourse, setSelectedCourse] = useState('Frontend Web Development');
   const [selectedDuration, setSelectedDuration] = useState('6 Months');
+  const [selectedLevel, setSelectedLevel] = useState('Basic');
+
   const [selectedFee, setSelectedFee] = useState(120000);
 
   let {createTrainee} = useContext(CreateContext)
@@ -36,6 +38,10 @@ const NewTrainees = () => {
 
   const handleChangeFee = (event) => {
     setSelectedFee(event.target.value);
+  };
+
+  const handleChangeLevel = (event) => {
+    setSelectedLevel(event.target.value);
   };
 
   let first = useRef()
@@ -57,11 +63,13 @@ const NewTrainees = () => {
     let Email = email.current.value
     let phoneNumber = phone.current.value
     let amountPaid = amount.current.value
-    let Balance = balance.current.value
+    let Balance = selectedFee - amount.current.value
+    console.log(Balance)
     let Duration = selectedDuration
     let Location = location.current.value
     let Course = selectedCourse
     let Fee = selectedFee
+    let Level = selectedLevel
     let mypic = myfile.current.value
     // let pic = URL.createObjectURL(file)
     let formData = new FormData();
@@ -69,6 +77,7 @@ const NewTrainees = () => {
     formData.append('first_name', firstName);
     formData.append("last_name", lastName);
     formData.append("other_names", otherName);
+    formData.append("level", Level);
     formData.append("email", Email);
     formData.append("phone_number", phoneNumber);
     formData.append("course_learning", Course);
@@ -80,6 +89,7 @@ const NewTrainees = () => {
     createTrainee(formData)
   }
 
+  
   return (
     <div className='new'>
       <Sidebar/>
@@ -156,6 +166,14 @@ const NewTrainees = () => {
                   <option value="40000">40000</option>
                 </select>
               </div>
+              <div className="formInput">
+                <label>Level</label>
+                <select id="level" name="level" value={selectedLevel} onChange={handleChangeLevel}>
+                  <option value="Basic">Basic</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advance">Advance</option>
+                </select>
+              </div>
               <div className="formInput" style={{display:"none"}}>
                 <label>Location</label>
                 <input type="text" defaultValue={user} required ref={location} />
@@ -164,10 +182,7 @@ const NewTrainees = () => {
                 <label>Amount Paid</label>
                 <input type="number" required ref={amount}/>
               </div>
-              <div className="formInput">
-                <label>Balance</label>
-                <input type="number" required ref={balance}/>
-              </div>
+
               {/* <Link to="/trainees"> */}
                 <button type='submit'>
                   Add

@@ -59,7 +59,7 @@ const ListTrainees = () => {
       field: 'profile_picture',
       headerName: '',
       sortable: false,
-      width: 70,
+      width: 60,
       renderCell: (params) => {
           return (
               <>
@@ -72,8 +72,12 @@ const ListTrainees = () => {
     },
     { field: 'last_name', headerName: 'Last name', width: 120 },
     { field: 'first_name', headerName: 'First name', width: 100},
+    // { field: 'other_names', headerName: 'Other name', width: 100},
     { field: "course_learning", headerName: 'Course', width: 200 },
+    // { field: "email", headerName: 'Email', width: 270 },
+    // { field: "phone_number", headerName: 'Phone Number', width: 130 },
     {field: "registrationDate", headerName: "Registration Date", width: 130},
+    {field: "level", headerName: "Level", width: 100},
     {field: "training_fee", headerName: "Training Fee", width: 110},
     { field: 'amount_paid', headerName: 'Amount paid', width: 130 },
     { field: 'balance', headerName: 'Balance', width: 100 },
@@ -86,7 +90,6 @@ const ListTrainees = () => {
           return (
               <>
                   <div className='actions'>
-
                         <button onClick={event => view(event, params)} className='view'>
                           View
                         </button>

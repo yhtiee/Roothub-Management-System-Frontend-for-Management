@@ -20,6 +20,13 @@ const EditTrainee = () => {
   const [selectedCourse, setSelectedCourse] = useState(traineeData.course_learning);
   const [selectedDuration, setSelectedDuration] = useState(traineeData.course_duration);
   const [selectedFee, setSelectedFee] = useState(traineeData.training_fee);
+  const [selectedLevel, setSelectedLevel] = useState(traineeData.level);
+  const [calculatedBalance, setBalance] = useState(null);
+  const [newState, setNew] = useState(false);
+  const [totalAmount, setTotalAmount] = useState(null);
+
+  
+
 
   let {updateTrainee} = useContext(UpdateContext)
   let user = "Uyo"
@@ -34,6 +41,10 @@ const EditTrainee = () => {
 
   const handleChangeFee = (event) => {
     setSelectedFee(event.target.value);
+  };
+
+  const handleChangeLevel = (event) => {
+    setSelectedLevel(event.target.value);
   };
 
   let first = useRef()
@@ -57,28 +68,52 @@ const EditTrainee = () => {
       const fileImage = new File([blob], 'image.jpg', { type: 'image/jpeg' });
       setFileImage(fileImage);
     });
+    console.log(traineeData.training_fee)
   }, []);
+
+  let changeState = (e) => [
+    setNew(true)
+  ]
+
+  let calcBalance = (e) => {
+    let Fee = selectedFee
+    let amountPaid = amount.current.value
+    console.log(amountPaid)
+    let total = parseFloat(amountPaid) + parseFloat(traineeData.amount_paid)
+    console.log(total)
+    let Balance = Fee - total
+    setBalance(Balance)
+    setTotalAmount(total)
+  }
 
   let submitForm = (e) => {
     e.preventDefault()
+    if(newState){
+      calcBalance()
+    }
     let firstName = first.current.value
     let lastName = last.current.value
     let otherName = other.current.value
     let Email = email.current.value
     let phoneNumber = phone.current.value
-    let amountPaid = amount.current.value
-    let Balance = balance.current.value
+    let amountPaid = newState? totalAmount : amount.current.value
+    let Balance = newState? calculatedBalance : traineeData.balance
     let Duration = selectedDuration
     let Location = location.current.value
     let Course = selectedCourse
     let Fee = selectedFee
+    let Level = selectedLevel
     let userId = traineeData.id
+    console.log(ImageFile)
+    console.log(file)
+
     let formData = new FormData();
     formData.append("profile_picture", file? file : ImageFile);
     formData.append('first_name', firstName);
     formData.append("last_name", lastName);
     formData.append("other_names", otherName);
     formData.append("email", Email);
+    formData.append("level", Level);
     formData.append("phone_number", phoneNumber);
     formData.append("course_learning", Course);
     formData.append("course_duration", Duration);
@@ -156,11 +191,19 @@ const EditTrainee = () => {
               <div className="formInput">
                 <label>Training Fee</label>
                 <select id="training_fee" name="training_fee" value={selectedFee} onChange={handleChangeFee}>
-                  <option value="120000">120000</option>
-                  <option value="150000">150000</option>
-                  <option value="180000">180000</option>
-                  <option value="130000">130000</option>
-                  <option value="40000">40000</option>
+                  <option value={120000}>120000</option>
+                  <option value={150000}>150000</option>
+                  <option value={180000}>180000</option>
+                  <option value={130000}>130000</option>
+                  <option value={40000}>40000</option>
+                </select>
+              </div>
+              <div className="formInput">
+                <label>Level</label>
+                <select id="level" name="level" value={selectedLevel} onChange={handleChangeLevel}>
+                  <option value="Basic">Basic</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advance">Advance</option>
                 </select>
               </div>
               <div className="formInput" style={{display:"none"}}>
@@ -169,12 +212,12 @@ const EditTrainee = () => {
               </div>
               <div className="formInput">
                 <label>Amount Paid</label>
-                <input type="number" required ref={amount} defaultValue={traineeData.amount_paid}/>
+                <input type="number" required ref={amount} defaultValue={traineeData.amount_paid} onChange={changeState}/>
               </div>
-              <div className="formInput">
+              {/* <div className="formInput">
                 <label>Balance</label>
                 <input type="number" required ref={balance} defaultValue={traineeData.balance}/>
-              </div>
+              </div> */}
               {/* <Link to="/trainees"> */}
                 <button type='submit'>
                   Edit
